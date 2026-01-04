@@ -28,6 +28,8 @@
  * Private function prototypes
  **********************************************************************************************************************/
 
+double function_using_fpu(double random_arg);
+
 /***********************************************************************************************************************
  * Exported global variables (to be accessed by other files)
  **********************************************************************************************************************/
@@ -90,7 +92,8 @@
 
 double function_using_fpu(double random_arg)
 {
-    return sin(random_arg); // sin() returns a double. sinf() returns float.
+    double my_constant = random_arg * 100.0/70.0;
+    return sin(random_arg+my_constant); // sin() returns a double. sinf() returns float.
 }
 
 void R_BSP_SoftwareDelay (uint32_t delay, bsp_delay_units_t units)

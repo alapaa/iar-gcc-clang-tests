@@ -7,8 +7,6 @@
 /***********************************************************************************************************************
  * Includes   <System Includes> , "Project Includes"
  **********************************************************************************************************************/
-#include <math.h>
-#include <stdlib.h>
 
 #include "bsp_api.h"
 #include "bsp_delay.h"
@@ -89,25 +87,12 @@ double function_using_fpu(double random_arg);
  *          at lower speeds.
  **********************************************************************************************************************/
 
-
-double function_using_fpu(double random_arg)
-{
-    double my_constant = random_arg * 100.0/70.0;
-    return sin(random_arg+my_constant); // sin() returns a double. sinf()
-                                        // returns float.
-}
-
 void R_BSP_SoftwareDelay (uint32_t delay, bsp_delay_units_t units)
 {
     uint32_t iclk_hz;
     uint32_t loops_required = 0;
     uint32_t total_us       = (delay * 3 * units); /** Convert the requested
                                                     * time to microseconds. */
-    srand(37);
-    double random_arg = (uint32_t)(rand()/RAND_MAX) * 30/10.0; // Note: 10.0 is
-                                                               // double prec. constant.
-    double result = function_using_fpu(random_arg);
-    total_us += (uint32_t)result;
 
     iclk_hz = SystemCoreClock;                 /** Get the system clock frequency in Hz. */
 

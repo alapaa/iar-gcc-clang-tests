@@ -28,12 +28,12 @@ uint32_t perf_loop(double random_arg)
     // documentation
     // ra/e2studio_v2025-10_fsp_v6.2.0/fsp_documentation/v6.2.0/fsp_user_manual_v6.2.0/index.html
 
-    volatile uint32_t start_timer = systick_microseconds(); // Read timer value (processor time)
+    uint32_t start_timer = systick_microseconds(); // Read timer value (processor time)
     const int kIterations = 100000; // To be adjusted.
     for (int i = 0; i < kIterations; i++) {
         result = function_using_fpu(result);
     }
-    volatile uint32_t end_timer = systick_microseconds(); // Read timer value
+    uint32_t end_timer = systick_microseconds(); // Read timer value
 
     return (uint32_t)(end_timer - start_timer);
 }

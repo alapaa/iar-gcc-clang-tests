@@ -14,10 +14,12 @@ void SysTick_Handler(void)
 void systick_setup(void)
 {
     uint32_t result;
-    const uint32_t reload_val = 0x00FFFFFF;
-    result = SysTick_Config(reload_val);
-//    result = SysTick_Config(SystemCoreClock); // 1000 is the number of ticks
-//                                              // per second
+    const uint32_t ONE_MILLION = 1000000;
+    const uint32_t HUNDRED_THOUSAND = 100000;
+    const uint32_t reload_val = SystemCoreClock; // 200E6 on RA6E1.
+    result = SysTick_Config(reload_val/ONE_MILLION); // The fcn argument is the number
+                                         // of ticks between two interrupts.
+                                         // See https://arm-software.github.io/CMSIS_5/Core/html/group__SysTick__gr.html
 
     assert(result == 0);
 

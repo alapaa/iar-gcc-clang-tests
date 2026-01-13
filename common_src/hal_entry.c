@@ -8,7 +8,7 @@
 #include "perf_meas_loop.h"
 
 extern bsp_leds_t g_bsp_leds;
-uint32_t nr_clocks = 0xFFFFAAAA;
+volatile uint32_t nr_clocks = 0xFFFFAAAA;
 
 /*******************************************************************************************************************//**
  * @brief  Blinky example application

@@ -6,9 +6,13 @@
 
 #include "hal_data.h"
 #include "perf_meas_loop.h"
+#include "integer_perf_loop.h"
 
 extern bsp_leds_t g_bsp_leds;
 volatile uint32_t nr_clocks = 0xFFFFAAAA;
+volatile uint64_t result_from_integer_loop = 0xDEADBEEFDEADBEEF;
+uint32_t arr1[kArrSz];
+uint32_t arr2[kArrSz];
 
 /*******************************************************************************************************************//**
  * @brief  Blinky example application
@@ -55,8 +59,14 @@ void hal_entry (void)
     bsp_io_level_t pin_level = BSP_IO_LEVEL_LOW;
 
 
-    volatile double foo = 1234.5678;
-    nr_clocks = perf_loop(foo); // Execute perf loop, measure time.
+//    volatile double foo = 1234.5678;
+//    nr_clocks = perf_loop(foo); // Execute perf loop, measure time.
+    for (int i = 0; i < kArrSz; i++) {
+        arr1[i] = (uint32_t)i;
+        arr2[i] = 2*(uint32_t)i;
+    }
+    nr_clocks = integer_perf_loop(arr1, arr2);
+    result_from_integer_loop = u64_external_result;
     //assert(nr_clocks != 0);
 
     while (1)

@@ -67,7 +67,7 @@ void hal_entry (void)
         arr2[i] = 2*(uint32_t)i;
     }
     //nr_clocks = integer_perf_loop(arr1, arr2);
-    nr_clocks = integer_perf_loop_add_vectors(arr1, arr2, result_arr);
+    nr_clocks = integer_perf_loop_add_vectors_unrolled(arr1, arr2, result_arr);
     //assert(nr_clocks != 0);
 
     while (1)

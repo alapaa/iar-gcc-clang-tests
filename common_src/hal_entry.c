@@ -11,8 +11,8 @@
 extern bsp_leds_t g_bsp_leds;
 volatile uint32_t nr_clocks = 0xFFFFAAAA;
 volatile uint64_t result_from_integer_loop = 0xDEADBEEFDEADBEEF;
-uint32_t arr1[kArrSz];
-uint32_t arr2[kArrSz];
+IAR_NO_INIT uint32_t arr1[kArrSz];
+IAR_NO_INIT uint32_t arr2[kArrSz];
 
 /*******************************************************************************************************************//**
  * @brief  Blinky example application

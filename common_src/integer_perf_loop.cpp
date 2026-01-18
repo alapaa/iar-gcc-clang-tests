@@ -19,7 +19,7 @@ uint32_t integer_perf_loop(uint32_t arr1[], uint32_t arr2[])
     systick_setup();
 
     uint32_t start_timer = systick_microseconds();
-    const int kIterations = 100000; // To be adjusted.
+    const int kIterations = kArrSz;
     for (int i = 0; i < kIterations; i++) {
         result += arr1[i]*arr2[i];
     }

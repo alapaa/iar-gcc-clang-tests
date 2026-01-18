@@ -16,7 +16,7 @@ uint32_t integer_perf_loop_add_vectors(
     systick_setup();
 
     uint32_t start_timer = systick_microseconds();
-    const int kIterations = 100000; // To be adjusted.
+    const int kIterations = kArrSz;
     for (int i = 0; i < kIterations; i++) {
         result[i] = arr1[i]+arr2[i];
     }
